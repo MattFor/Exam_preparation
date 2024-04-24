@@ -115,3 +115,9 @@ def can_represent_in_base(number, base):
 			return False
 		number //= base
 	return True
+
+8. Matrix rotation 90deg to the right
+
+original = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+rotated = [list(z) for z in zip(*original[::-1])]
