@@ -121,3 +121,45 @@ def can_represent_in_base(number, base):
 original = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 rotated = [list(z) for z in zip(*original[::-1])]
+
+9. Moda / Dominanta
+
+from collections import Counter
+
+lista=[1,2,3,4,5]
+
+def moda(lista):
+    if all(i == 1 for i in Counter(lista).values()):
+        return lista
+    return Counter(lista).most_common(1)[0][0]
+
+def moda(lista):
+    return max(set(lista), key = lista.count)
+
+def moda2(T):
+    maxi = 0
+    n = len(T)
+    for i in range(n):
+        count = 0
+        for j in range(n):
+            if T[i] == T[j]:
+                count += 1
+        if count > maxi:
+            maxi = count
+            moda = T[i]
+    return moda
+
+10. Mediana
+
+def mediana(lista):
+    for i in range(len(lista)):
+        for j in range(len(lista) - i - 1):
+            if lista[j] > lista[j + 1]:
+                lista[j + 1], lista[j] = lista[j], lista[j + 1]
+
+    if len(lista) % 2 == 0:
+        mediana = lista[int(len(lista) / 2)] + lista[int(len(lista) / 2 - 1)]
+        mediana /= 2
+    else:
+        mediana = lista[int(len(lista) / 2)]
+    return mediana
